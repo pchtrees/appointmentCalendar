@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment</title>
+    <link rel="icon" href="https://i.ibb.co/YDqkHcT/icon.png" type="image/icon type">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.0/main.css" rel="stylesheet">
+</head>
+<body class="bg-[#f5f3f4] font-sans">
+
+    <nav class="bg-[#8C1C13] text-white p-6">
+        <div class="container mx-auto flex justify-between items-center h-20">
+            <img class="w-60" src="https://i.ibb.co/5WH9LG9/museum-Logo.png" alt="Museum Logo">
+            <ul class="hidden md:flex space-x-4">
+                <li>
+                    <a href="#sign-in" class="border border-[#735751] hover:bg-[#A78A7F] py-2 px-4 rounded-full">Sign In</a>
+                </li>
+                <li>
+                    <a href="#sign-up" class="bg-[#735751] text-white hover:bg-[#A78A7F] py-2 px-4 rounded-full">Sign Up</a>
+                </li>
+            </ul>
+            <div id="menuButton" class="md:hidden cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#669BBC]" viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32-32-32H416c17.7 0 32 14.3 32 32z"/></svg>
+            </div>
+        </div>
+    </nav>
+
+    <div id="mobileNav" class="fixed top-0 left-0 w-64 h-screen bg-[#8C1C13] text-white hidden md:hidden border-r border-[#735751] z-50">
+        <div class="flex flex-col justify-between h-full">
+            <img class="w-40 mx-auto my-4" src="https://i.ibb.co/5WH9LG9/museum-Logo.png" alt="Museum Logo">
+            <ul class="text-xl p-4">
+                <li class="p-4">
+                    <a href="#sign-in" class="border border-[#735751] hover.bg-[#A78A7F] py-2 px-4 rounded-full">Sign In</a>
+                </li>
+                <li class="p-4"> 
+                    <a href="#sign-up" class="bg-[#735751] text-white hover.bg-[#A78A7F] py-2 px-4 rounded-full">Sign Up</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container mx-auto py-4 px-4">
+        <h1 class="text-3xl font-bold text-[#003049] text-center mb-12 mt-6">Book an Appointment</h1>
+        <div class="flex flex-col items-center md:flex-row md:justify-around mx-auto gap-3">
+            <div class="max-w-3xl p-4 bg-white rounded-lg shadow-lg w-full md:w-1/2">
+                <label class="block text-[#003049] text-sm font-semibold mb-2">Calendar</label>
+                <div id="calendar"></div>
+                <div class="availability-labels flex justify-between space-x-4 mt-4">
+                    <div class="flex-1">
+                        <div class="label-box bg-green-500 p-2 rounded-lg text-center">
+                            <span class="availability-label text-white ">Available</span>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <div class="label-box bg-red-500 p-2 rounded-lg text-center">
+                            <span class="availability-label text-white text-center">Fully Booked</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="max-w-md p-4 bg-[#f5f3f4] text-[#003049] rounded-lg shadow-lg w-full md:w-1/2 mb-4 md:mb- mt-4 0">
+                <label class="block text-[#003049] text-sm font-semibold">Select Time Slot</label>
+                <div class="rounded-xl overflow-hidden">
+                <table class="w-full border-collapse sm:border-separate">
+                    <tr>
+                        <th class="w-1/2 text-center py-2 px-4 border border-[#A78A7F] bg-[#735751] text-white">Time</th>
+                        <th class="w-1/2 text-center py-2 px-4 border border-[#A78A7F] bg-[#735751] text-white">Available Slots</th>
+                    </tr>
+                    <tr class="text-center hover:bg-[#fefae0]">
+                        <td class="py-2 px-4 border border-[#A78A7F]">8:00AM</td>
+                        <td class="py-2 px-4 border border-[#A78A7F]">0/15</td>
+                    </tr>
+                    <tr class="text-center hover:bg-[#fefae0]">
+                        <td class="py-2 px-4 border border-[#A78A7F]">9:00AM</td>
+                        <td class="py-2 px-4 border border-[#A78A7F]">0/15</td>
+                    </tr>
+                    <tr class="text-center hover:bg-[#fefae0]">
+                        <td class="py-2 px-4 border border-[#A78A7F]">10:00AM</td>
+                        <td class="py-2 px-4 border border-[#A78A7F]">0/15</td>
+                    </tr>
+                    <tr class="text-center hover:bg-[#fefae0]">
+                        <td class="py-2 px-4 border border-[#A78A7F]">11:00AM</td>
+                        <td class="py-2 px-4 border border-[#A78A7F]">0/15</td>
+                    </tr>
+                    <tr class="text-center hover:bg-[#fefae0]">
+                        <td class="py-2 px-4 border border-[#A78A7F]">12:00PM</td>
+                        <td class="py-2 px-4 border border-[#A78A7F]">0/15</td>
+                    </tr>
+                    <tr class="text-center hover:bg-[#fefae0]">
+                        <td class="py-2 px-4 border border-[#A78A7F]">1:00PM</td>
+                        <td class="py-2 px-4 border border-[#A78A7F]">0/15</td>
+                    </tr>
+                    <tr class="text-center hover:bg-[#fefae0]">
+                        <td class="py-2 px-4 border border-[#A78A7F]">2:00PM</td>
+                        <td class="py-2 px-4 border border-[#A78A7F]">0/15</td>
+                    </tr>
+                    <tr class="text-center hover:bg-[#fefae0]">
+                        <td class="py-2 px-4 border border-[#A78A7F]">3:00PM</td>
+                        <td class="py-2 px-4 border border-[#A78A7F]">0/15</td>
+                    </tr>
+                    <tr class="text-center hover:bg-[#fefae0]">
+                        <td class="py-2 px-4 border border-[#A78A7F]">4:00PM</td>
+                        <td class="py-2 px-4 border border-[#A78A7F]">0/15</td>
+                    </tr>
+                </table>
+            </div>
+            </div>
+        </div>
+        <div class="py-2 px-4 md:text-right text-center">
+            <button class="bg-[#735751] text-white hover:bg-[#A78A7F] py-2 px-4 rounded-full">Next</button>
+        </div>
+
+    </div>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.0/main.js"></script>
+    <script src="script.js"></script>
+    
+</body>
+</html>
